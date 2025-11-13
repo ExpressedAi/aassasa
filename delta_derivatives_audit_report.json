@@ -1,7 +1,7 @@
 {
-  "timestamp": "2025-11-13T00:45:41.883861",
-  "gates_passed": 2,
-  "classification": "PROBE",
+  "timestamp": "2025-11-13T03:42:10.379816",
+  "gates_passed": 3,
+  "classification": "PRIMITIVE",
   "results": {
     "E0": {
       "gate": "E0_Calibration",
@@ -9,17 +9,17 @@
       "results": {
         "LF": {
           "test": "E0_LockFuture_Null",
-          "mean_price": 0.012803514480010386,
-          "std_price": 0.07413670664393113,
+          "mean_price": 0.0,
+          "std_price": 0.0,
           "expected": 0.5,
-          "t_statistic": -207.70818047117268,
+          "t_statistic": -Infinity,
           "p_value": 0.0,
           "passed": "False",
-          "notes": "Systematic bias detected: mean=0.013"
+          "notes": "Systematic bias detected: mean=0.000"
         },
         "PBO": {
           "test": "E0_PhaseBarrier_Null",
-          "mean_price": 0.12547275784050935,
+          "mean_price": 0.13744355810559045,
           "expected": "< 0.3",
           "passed": "True",
           "notes": "Random states rarely hit tight barrier"
@@ -39,8 +39,8 @@
       "results": {
         "PhaseStructure": {
           "test": "E1_AmplitudeMute_PhaseStructure",
-          "p_value_before_mute": 1.8661240445967308e-68,
-          "p_value_after_mute": 1.8661240445967308e-68,
+          "p_value_before_mute": 2.1760462084295505e-09,
+          "p_value_after_mute": 2.1760462084295505e-09,
           "passed": "True",
           "notes": "Phase structure survives amplitude mute"
         },
@@ -54,7 +54,7 @@
     },
     "E2": {
       "gate": "E2_Symmetry",
-      "passed": false,
+      "passed": true,
       "results": {
         "Permutation": {
           "test": "E2_Permutation_Invariance",
@@ -65,10 +65,10 @@
         },
         "Gauge": {
           "test": "E2_Gauge_Invariance",
-          "agreement_rate": 0.22,
+          "agreement_rate": 1.0,
           "expected": "> 0.95",
-          "passed": false,
-          "notes": "\u274c Only 22.0% invariant to phase offset"
+          "passed": true,
+          "notes": "\u2705 100.0% gauge invariant"
         }
       }
     },
@@ -78,20 +78,20 @@
       "results": {
         "PhaseNudge": {
           "test": "E3_PhaseNudge_Causality",
-          "mean_delta_toward": -0.0008231501992611504,
-          "mean_delta_away": 0.006026090267672854,
-          "mean_delta_sham": 0.0033193699538521565,
-          "p_value_toward_vs_sham": 0.9999999833200073,
-          "p_value_away_vs_sham": 0.999999999996451,
+          "mean_delta_toward": -5.15661587504231e-14,
+          "mean_delta_away": 1.5360860731542894e-14,
+          "mean_delta_sham": 1.3515577546030499e-14,
+          "p_value_toward_vs_sham": 0.9588507949660705,
+          "p_value_away_vs_sham": 0.9335931585322683,
           "passed": "False",
           "notes": "\u274c No causal effect detected"
         },
         "CouplingNudge": {
           "test": "E3_CouplingNudge_Causality",
-          "mean_delta_increase_K": -0.0002991908277419251,
-          "mean_delta_decrease_K": 0.0003236049973130269,
-          "p_value_increase": 0.9882878108240767,
-          "p_value_decrease": 0.9901844188379154,
+          "mean_delta_increase_K": 4.505655108270427e-16,
+          "mean_delta_decrease_K": -8.081498433417285e-16,
+          "p_value_increase": 0.04560320349585997,
+          "p_value_decrease": 0.045892440522989256,
           "passed": "False",
           "notes": "\u274c K nudges dont produce predicted effects"
         }
@@ -127,5 +127,5 @@
       }
     }
   },
-  "recommendation": "Explore freely, no public claims"
+  "recommendation": "Report findings with caveats, no causality claims"
 }
