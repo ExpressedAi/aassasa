@@ -1,0 +1,131 @@
+{
+  "timestamp": "2025-11-13T00:45:41.883861",
+  "gates_passed": 2,
+  "classification": "PROBE",
+  "results": {
+    "E0": {
+      "gate": "E0_Calibration",
+      "passed": false,
+      "results": {
+        "LF": {
+          "test": "E0_LockFuture_Null",
+          "mean_price": 0.012803514480010386,
+          "std_price": 0.07413670664393113,
+          "expected": 0.5,
+          "t_statistic": -207.70818047117268,
+          "p_value": 0.0,
+          "passed": "False",
+          "notes": "Systematic bias detected: mean=0.013"
+        },
+        "PBO": {
+          "test": "E0_PhaseBarrier_Null",
+          "mean_price": 0.12547275784050935,
+          "expected": "< 0.3",
+          "passed": "True",
+          "notes": "Random states rarely hit tight barrier"
+        },
+        "EFS": {
+          "test": "E0_EligibilityFailure_Null",
+          "mean_risk": 0.3394518021024161,
+          "expected": "0.1 - 0.7",
+          "passed": "True",
+          "notes": "Null states have moderate risk"
+        }
+      }
+    },
+    "E1": {
+      "gate": "E1_Vibration",
+      "passed": true,
+      "results": {
+        "PhaseStructure": {
+          "test": "E1_AmplitudeMute_PhaseStructure",
+          "p_value_before_mute": 1.8661240445967308e-68,
+          "p_value_after_mute": 1.8661240445967308e-68,
+          "passed": "True",
+          "notes": "Phase structure survives amplitude mute"
+        },
+        "FrequencyStructure": {
+          "test": "E1_FrequencyStructure_Persistence",
+          "p_value": 6.401816036956244e-06,
+          "passed": "True",
+          "notes": "Frequency structure independent of coupling amplitude"
+        }
+      }
+    },
+    "E2": {
+      "gate": "E2_Symmetry",
+      "passed": false,
+      "results": {
+        "Permutation": {
+          "test": "E2_Permutation_Invariance",
+          "agreement_rate": 1.0,
+          "expected": "> 0.95",
+          "passed": true,
+          "notes": "\u2705 100.0% permutation invariant"
+        },
+        "Gauge": {
+          "test": "E2_Gauge_Invariance",
+          "agreement_rate": 0.22,
+          "expected": "> 0.95",
+          "passed": false,
+          "notes": "\u274c Only 22.0% invariant to phase offset"
+        }
+      }
+    },
+    "E3": {
+      "gate": "E3_Causal",
+      "passed": false,
+      "results": {
+        "PhaseNudge": {
+          "test": "E3_PhaseNudge_Causality",
+          "mean_delta_toward": -0.0008231501992611504,
+          "mean_delta_away": 0.006026090267672854,
+          "mean_delta_sham": 0.0033193699538521565,
+          "p_value_toward_vs_sham": 0.9999999833200073,
+          "p_value_away_vs_sham": 0.999999999996451,
+          "passed": "False",
+          "notes": "\u274c No causal effect detected"
+        },
+        "CouplingNudge": {
+          "test": "E3_CouplingNudge_Causality",
+          "mean_delta_increase_K": -0.0002991908277419251,
+          "mean_delta_decrease_K": 0.0003236049973130269,
+          "p_value_increase": 0.9882878108240767,
+          "p_value_decrease": 0.9901844188379154,
+          "passed": "False",
+          "notes": "\u274c K nudges dont produce predicted effects"
+        }
+      }
+    },
+    "E4": {
+      "gate": "E4_RGPersistence",
+      "passed": true,
+      "results": {
+        "IntegerThinning": {
+          "test": "E4_IntegerThinning",
+          "mean_K_low_order": 0.30310928701975953,
+          "mean_K_mid_order": 0.3002914945898667,
+          "mean_K_high_order": 0.0,
+          "expected": "K_low > K_mid > K_high",
+          "passed": "True",
+          "notes": "\u2705 Low-order wins: K(0.303 > 0.300 > 0.000)"
+        },
+        "CoarseGraining": {
+          "test": "E4_CoarseGraining_Persistence",
+          "persistence_rate": 1.0,
+          "expected": "> 0.80",
+          "passed": true,
+          "notes": "\u2705 100.0% persist after \u00d72 pooling"
+        },
+        "Brittleness": {
+          "test": "E4_Brittleness_Stability",
+          "stability_rate": 1.0,
+          "expected": "> 0.85",
+          "passed": true,
+          "notes": "\u2705 100.0% remain stable"
+        }
+      }
+    }
+  },
+  "recommendation": "Explore freely, no public claims"
+}
